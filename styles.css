@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #87CEEB, #4682B4);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .search-box {
+    position: relative;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .search-box input:focus {
+    box-shadow: 0 0 0 2px rgba(70, 130, 180, 0.5);
+  }
+  
+  #suggestionList {
+    position: relative;
+    width: calc(100%);
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    list-style: none;
+    margin-bottom:15px ;
+    /* display:block; */
+  }
+  
+  #suggestionList li {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  #suggestionList li:hover {
+    background: #f0f8f0;
+  }
+  
+  #get-forecast {
+    width: 100%;
+    padding: 15px;
+    background: #4682B4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  #get-forecast:hover {
+    background: #3a6d96;
+    transform: translateY(-2px);
+  }
+  
+  .weather-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .location {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .weather-main {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .temperature-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 15px;
+  }
+  
+  .weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+  
+  .main-temperature {
+    font-size: 42px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feels-like {
+    font-size: 16px;
+    color: #eee;
+    margin-top: 5px;
+  }
+  
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .detail-box {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .detail-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detail-label {
+    font-size: 14px;
+    color: #eee;
+    margin-bottom: 5px;
+  }
+  
+  .detail-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 480px) {
+    .container {
+      width: 100%;
+    }
+    
+    .weather-card {
+      padding: 20px;
+    }
+    
+    .location {
+      font-size: 24px;
+    }
+    
+    .weather-main {
+      font-size: 16px;
+    }
+    
+    .main-temperature {
+      font-size: 36px;
+    }
+    
+    .detail-box {
+      padding: 12px;
+    }
+  }
+  
+  /* Animation for loading state */
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  .loading {
+    animation: pulse 1.5s infinite;
+  }
